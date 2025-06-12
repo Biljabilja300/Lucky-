@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Molersko-fasaderska radnja LUCKY</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #fff;
+      background: url('https://i.imgur.com/yW8AAJV.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-size: 20px;
+    }
+    .overlay {
+      background-color: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+    nav {
+      background: rgba(0,0,0,0.8);
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    section {
+      display: none;
+      padding: 30px 20px;
+    }
+    section.active {
+      display: block;
+    }
+    .pocetna h1 {
+      font-size: 46px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .pocetna h2 {
+      font-size: 28px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .pocetna p {
+      font-size: 22px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .gallery img {
+      width: 250px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .cenovnik {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 10px;
+    }
+    .cenovnik h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    .cenovnik ul {
+      list-style: none;
+      font-size: 20px;
+    }
+    .cenovnik li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    .kontakt-box {
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 10px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      font-size: 22px;
+    }
+    .kontakt-box p {
+      margin-bottom: 10px;
+    }
+    .kontakt-box a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    /* Dugmad za kontakt */
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 10px 0 10px;
+      padding: 14px 30px;
+      font-size: 22px;
+      font-weight: 600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      user-select: none;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .btn-call {
+      background-color: #28a745;
+    }
+    .btn-call:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+    .btn-email {
+      background-color: #007bff;
+    }
+    .btn-email:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      display: block;
+      margin: 50px auto;
+      max-width: 90%;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    /* Mapa u sekciji Kontakt */
+    #map {
+      width: 100%;
+      height: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 600px) {
+      .gallery img {
+        width: 100%;
+        max-width: 100%;
+      }
+      .cenovnik, .kontakt-box {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <nav>
+      <a onclick="showSection('pocetna')">Početna</a>
+      <a onclick="showSection('galerija')">Galerija</a>
+      <a onclick="showSection('cene')">Cene</a>
+      <a onclick="showSection('kontakt')">Kontakt</a>
+    </nav>
+
+    <section id="pocetna" class="pocetna active">
+      <h1>Molersko-fasaderska radnja LUCKY</h1>
+      <h2>O nama</h2>
+      <p>Sa više od 10 godina iskustva u molersko-fasaderskim radovima, iza nas stoje stotine zadovoljnih mušterija koje su prepoznale našu posvećenost kvalitetu, preciznosti i efikasnosti. Naš tim čine iskusni i pouzdani majstori, koji svoj posao obavljaju s pažnjom i odgovornošću – kao da rade u sopstvenom domu.</p>
+      <br />
+      <p>Ponosimo se odličnom organizacijom, što omogućava brz i tačan završetak radova, bez kompromisa po pitanju kvaliteta. Koristimo proverene materijale i savremene tehnike kako bismo ispunili i nadmašili očekivanja naših klijenata.</p>
+      <br />
+      <p>Uz to, nudimo povoljne cene, bez skrivenih troškova, i besplatne procene radova. Bilo da vam je potrebno osvežavanje prostora, kompletno renoviranje, ili fasaderski radovi koji kombinuju funkcionalnost i estetiku – tu smo da zajedno stvorimo prostor u kojem ćete uživati.</p>
+      <br />
+      <p>Vaše zadovoljstvo je naša najbolja preporuka.</p>
+    </section>
+
+    <section id="galerija">
+      <div class="gallery">
+        <img src="https://i.imgur.com/G8Hcp97.jpeg" alt="Spoljašnji" onclick="openModal(this.src)" />
+        <img src="https://i.imgur.com/74LrL7D.jpeg" alt="Sahara" onclick="openModal(this.src)" />
+        <img src="https://i.imgur.com/zRyUO08.jpeg" alt="Unutrašnji" onclick="openModal(this.src)" />
+        <img src="https://i.imgur.com/vH1PbE2.jpeg" alt="Unutrašnji 2" onclick="openModal(this.src)" />
+        <img src="https://i.imgur.com/TtepjCR.jpeg" alt="Unutrašnji 3" onclick="openModal(this.src)" />
+        <img src="https://i.imgur.com/oKxtiDj.jpeg" alt="Unutrašnji 4" onclick="openModal(this.src)" />
+      </div>
+    </section>
+
+    <section id="cene">
+      <div class="cenovnik">
+        <h3>Cenovnik</h3>
+        <ul>
+          <li>Krečenje belo – 1,5€</li>
+          <li>Krečenje u boji – 2€</li>
+          <li>Gletovanje – 5€</li>
+          <li>Guljenje – 1,5€</li>
+          <li>Podloga – 0,5€</li>
+          <li>Obrada po otvoru – 50€</li>
+          <li>Izolacija (stiropor + mrežica + lepak) – 13€</li>
+          <li>Fasada – 3€</li>
+          <li>Opsiv po dužnom metru – 16€</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="kontakt-box">
+        <h3>Kontaktirajte nas</h3>
+        <p><strong>Telefon:</strong> <a href="tel:+381692213022">+381 69 221 3022</a></p>
+        <p><strong>Email:</strong> <a href="mailto:sreckosrecko2020@gmail.com">sreckosrecko2020@gmail.com</a></p>
+        <p><strong>Adresa:</strong> Sremska Mitrovica, Srbija</p>
+
+        <!-- Dugmad za poziv i email sa ikonama -->
+        <a href="tel:+381692213022" class="btn-contact btn-call" aria-label="Pozovi">📞 Pozovi</a>
+        <a href="mailto:sreckosrecko2020@gmail.com" class="btn-contact btn-email" aria-label="Pošalji email">✉️ Pošalji email</a>
+
+        <!-- Google mapa -->
+        <iframe
+          id="map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11284.903626498662!2d19.6103603!3d44.9763804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b101a816a2463%3A0x400bfb13d3c9b20!2sSremska%20Mitrovica!5e0!3m2!1ssr!2srs!4v1718204412633!5m2!1ssr!2srs"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Lokacija LUCKY radnje na mapi"
+        ></iframe>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal za slike -->
+  <div id="modal" class="modal" onclick="closeModal()">
+    <span class="close" title="Zatvori">&times;</span>
+    <img class="modal-content" id="modal-img" alt="Uvećana slika" />
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // Modal za galeriju
+    function openModal(src) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modal.style.display = 'block';
+      modalImg.src = src;
+    }
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
+    
